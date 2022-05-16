@@ -1,11 +1,18 @@
-# InvestmentPortfolio
+<a href="https://investchest.derekwolpert.com">
+    <img src="./readme_images/logo.png" alt="InvestChest Logo" title="InvestChest" align="right" height="60" />
+</a>
+
+# InvestChest
 
 ## Overview
 
-Investment Portfolio was completed as part of our Final Year Project. We have built a full-stack web-based stock portfolio application where users can firstly enter the cash amount of their savings and then purchase stock based on real-time values fetched from a third-party finance API. The app displays the chart of the stock entered so that the user can have a look at the trend of that stock. The app allows you to specify the number of shares of a stock you want to buy. The portfolio lets you have a glance on whether you are at a profit or loss for the respective stock. The app also maintains a log of all the transactions of the user.
+InvestChest was completed as part of the Winter 2020 assessment for the NYC Tech Talent Pipeline. The given instructions were to build a full-stack web-based stock portfolio application where users can purchase stock based on real-time values fetched from a third-party finance API.  The specifics regarding functionality (e.g. user registration, sign-in, purchase forms, portfolio and transaction page, etc.) were detailed ahead of time, as were wireframe styling guidelines.  Otherwise, I was free to utilize tools viewed best fit for the task.
 
-Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, Sass, CSS3, HTML5, Recharts</b> and the third-party <b>IEX Cloud</b> finance API.
+Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, Redux, Webpack, Sass, CSS3, HTML5, Recharts</b> and the third-party <b>IEX Cloud</b> finance API.  InvestChest is deployed within a <b>Docker Container</b> through <b>Amazon Web Services</b>.
 
+### [This project is currently hosted at <b>investchest.derekwolpert.com</b> - CLICK HERE to visit the live version of this project](https://investchest.derekwolpert.com)
+
+![Demo Gif](./readme_images/demo.gif)
 
 ## Architecture & Technologies
 
@@ -19,7 +26,8 @@ Technologies used include <b>MERN (MongoDB, Express.js, React, Node.js) stack, R
 - <b>Sass, CSS3 and HTML5</b>, used to manage the presentation and styling of the project.
 - <b>Recharts</b>, a JavaScript library built upon D3.js to assist with data visualization management in a React based project. 
 - <b>IEX Cloud</b>, a third-party finance API used to query and receive real-time stock prices.
-
+- <b>Docker</b>, containerization platform that allows the creation of lightweight/portable environments to run the project.
+- <b>Amazon Web Services</b>, an on-demand cloud computing platform utilized to assist with storage and deployment of the project (using ECR, ECS and EC2 along with appropriate network configuration).
 
 NOTE: In order to avoid exceeding IEX's free-tier API call limit, Sandbox testing mode is utilized for the stock chart data - therefore the information used within the chart is purposely inaccurate. Other financial information (e.g. latest price, last updated, company name etc.) for stocks are unaffected, and should be accurate to within 15 minutes of current status.
 
@@ -35,6 +43,71 @@ You can read more about Sandbox testing mode in IEX's docs: https://iexcloud.io/
 - Dynamic and auto-detecting light/dark mode in conjunction with a theme switch in the webpage's header.
 - A polished, intuitive, responsive user interface/experience.
 
+<p align="middle">
+    <img src="./readme_images/light_dark1.gif" width="430" />
+    <img src="./readme_images/light_dark2.gif" width="430" />
+</p>
+
+## Folder Structure
+
+    # Backend Directory
+
+    .
+    ├── config          # includes access keys, and user auth config
+    ├── frontend        # see the frontend directory below
+    |   └── ...
+    ├── models          # defines the structure of db schema
+    ├── readme_images   # images used on this page
+    ├── routes
+    |   └── api         # set connection btw frontend, backend
+    |                       # and db interactions
+    └── validation      # checks an instances details before registering
+                            # or modifying a db entry   
+
+    # Frontend Directory
+
+    frontend
+    ├── dist                    # compiled js and css files
+    ├── public                  # publicly accessible files
+    |                               # including primary html   
+    ├── src
+    |   |── actions 
+    |   |── components          # react components
+    |   |   |── footer
+    |   |   |── header
+    |   |   |── modal
+    |   |   |── portfolio
+    |   |   |── purchase
+    |   |   |── session
+    |   |   |── splash
+    |   |   |── stock_chart
+    |   |   |── theme_switch
+    |   |   └── transactions
+    |   |── middleware          # includes a thunk middleware definition
+    |   |── reducers            # organizes information for the
+    |   |                           # global redux store
+    |   |── store               # defines the redux store
+    |   └── util                # sets api calls to access backend
+    └── styles                  # design/styling files
+
+## Wireframe vs. Final Design
+
+<p align="middle">
+    <img src="./readme_images/wireframe_signin.jpg" width="430" />
+    <img src="./readme_images/final_signin.png" width="430" />
+</p>
+<p align="middle">
+    <img src="./readme_images/wireframe_register.jpg" width="430" />
+    <img src="./readme_images/final_register.png" width="430" />
+</p>
+<p align="middle">
+    <img src="./readme_images/wireframe_portfolio.jpg" width="430" />
+    <img src="./readme_images/final_portfolio.png" width="430" />
+</p>
+<p align="middle">
+    <img src="./readme_images/wireframe_transactions.jpg" width="430" />
+    <img src="./readme_images/final_transactions.png" width="430" />
+</p>
 
 ## Known Issues
 
@@ -43,8 +116,12 @@ You can read more about Sandbox testing mode in IEX's docs: https://iexcloud.io/
 ## Potential Future Features
 
 - Implement selling of stocks, which would be included as their own separate entries on the Transaction page
+- Enhanced responsiveness for various screen sizes, and mobile presentation optimization
 - Enhanced ticker symbol field in the purchase form with predictive values based on valid inputs, allow querying based on company name
 
 ## Resources
-- The basis for the styling of the loading spinner adapted from Loading.io: https://loading.io/css
 
+- The background image for the splash page was taken by César Couto, and was feature on Unsplash: https://unsplash.com/photos/TIvFLeqZ4ec
+- The basis for the styling of the loading spinner adapted from Loading.io: https://loading.io/css
+- The CSS reset used in this project: https://meyerweb.com/eric/tools/css/reset
+- Color selection variables inspired by Base16 default colors: http://chriskempson.com/projects/base16/

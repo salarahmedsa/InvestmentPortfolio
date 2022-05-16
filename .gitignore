@@ -1,0 +1,6 @@
+/config/keys_dev.js
+/node_modules
+/frontend/node_modules
+.DS_Store
+bundle.js
+bundle.css
